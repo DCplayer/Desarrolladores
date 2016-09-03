@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 /**
- * Created by Christian12 on 01/09/2016.
+ * Created by Diego on 01/09/2016.
  */
 public class SetFactory extends AbstractFactory{
     public static final String HASHSET = "HASHSET";
@@ -19,6 +19,7 @@ public class SetFactory extends AbstractFactory{
             return new TreeSet<>();
         if (setType.equalsIgnoreCase(LINKEDHASHSET))
             return new LinkedHashSet<>();
+        else
             return null;
     }
 }
