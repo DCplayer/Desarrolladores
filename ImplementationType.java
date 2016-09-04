@@ -66,6 +66,11 @@ public class ImplementationType extends javax.swing.JFrame {
 
         registerbtn.setText("register");
         registerbtn.setEnabled(false);
+        registerbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerbtnActionPerformed(evt);
+            }
+        });
 
         webDevTxtBx.setText("Web");
         webDevTxtBx.setEnabled(false);
@@ -230,6 +235,11 @@ public class ImplementationType extends javax.swing.JFrame {
     private void implementationCmbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_implementationCmbActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_implementationCmbActionPerformed
+
+    private void registerbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerbtnActionPerformed
+        // TODO add your handling code here:
+        developerNameInputtf.   setText("");
+    }//GEN-LAST:event_registerbtnActionPerformed
 
     /**
      * @param args the command line arguments
