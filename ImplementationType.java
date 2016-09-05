@@ -74,6 +74,11 @@ public class ImplementationType extends javax.swing.JFrame {
 
         webDevTxtBx.setText("Web");
         webDevTxtBx.setEnabled(false);
+        webDevTxtBx.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                webDevTxtBxActionPerformed(evt);
+            }
+        });
 
         javaDevTxtBx.setText("Java");
         javaDevTxtBx.setEnabled(false);
@@ -85,6 +90,11 @@ public class ImplementationType extends javax.swing.JFrame {
 
         mobileDevTxtBx.setText("Mobile");
         mobileDevTxtBx.setEnabled(false);
+        mobileDevTxtBx.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mobileDevTxtBxActionPerformed(evt);
+            }
+        });
 
         developerNameInputtf.setEnabled(false);
         developerNameInputtf.addActionListener(new java.awt.event.ActionListener() {
@@ -217,6 +227,15 @@ public class ImplementationType extends javax.swing.JFrame {
 
     private void javaDevTxtBxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_javaDevTxtBxActionPerformed
         // TODO add your handling code here:
+        if (   webDevTxtBx.     isSelected() == false && 
+               javaDevTxtBx.    isSelected()== false &&
+               mobileDevTxtBx.  isSelected() == false
+                ) {
+            registerbtn.        setEnabled(false);
+        }
+        else{
+            registerbtn.        setEnabled(true);
+        }
     }//GEN-LAST:event_javaDevTxtBxActionPerformed
 
     private void implementationbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_implementationbtnActionPerformed
@@ -226,7 +245,6 @@ public class ImplementationType extends javax.swing.JFrame {
         webDevTxtBx.            setEnabled(true);
         mobileDevTxtBx.         setEnabled(true);
         developerNameInputtf.   setEnabled(true);
-        registerbtn.            setEnabled(true);        
         implementationbtn.      setEnabled(false);
         finishInputbtn.         setEnabled(true);
         
@@ -240,6 +258,32 @@ public class ImplementationType extends javax.swing.JFrame {
         // TODO add your handling code here:
         developerNameInputtf.   setText("");
     }//GEN-LAST:event_registerbtnActionPerformed
+
+    private void mobileDevTxtBxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mobileDevTxtBxActionPerformed
+        // TODO add your handling code here:
+        if (   webDevTxtBx.     isSelected() == false && 
+               javaDevTxtBx.    isSelected()== false &&
+               mobileDevTxtBx.  isSelected() == false
+                ) {
+            registerbtn.        setEnabled(false);
+        }
+        else{
+            registerbtn.        setEnabled(true);
+        }
+    }//GEN-LAST:event_mobileDevTxtBxActionPerformed
+
+    private void webDevTxtBxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_webDevTxtBxActionPerformed
+        // TODO add your handling code here:
+        if (    webDevTxtBx.     isSelected() == false && 
+                javaDevTxtBx.    isSelected()== false &&
+                mobileDevTxtBx.  isSelected() == false
+        ) {
+            registerbtn.        setEnabled(false);
+        }
+        else{
+            registerbtn.        setEnabled(true);
+        }
+    }//GEN-LAST:event_webDevTxtBxActionPerformed
 
     /**
      * @param args the command line arguments
