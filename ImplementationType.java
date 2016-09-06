@@ -6,7 +6,12 @@
 package hdt6;
 
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 /**
  *
@@ -103,9 +108,19 @@ public class ImplementationType extends javax.swing.JFrame {
                 developerNameInputtfActionPerformed(evt);
             }
         });
+        developerNameInputtf.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                developerNameInputtfKeyTyped(evt);
+            }
+        });
 
         showDevsbtn.setText("Show Devs");
         showDevsbtn.setEnabled(false);
+        showDevsbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showDevsbtnActionPerformed(evt);
+            }
+        });
 
         developerlbl.setText("Developer Name");
 
@@ -207,7 +222,7 @@ public class ImplementationType extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
@@ -247,11 +262,29 @@ public class ImplementationType extends javax.swing.JFrame {
 
     private void implementationCmbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_implementationCmbActionPerformed
         // TODO add your handling code here:
+         Object selected = implementationCmb.getSelectedItem();
+                
+                if(selected.toString().equals("Hash Set")){
+                    SetFactory rf = new SetFactory();                    
+                    HashSet<Developers> newHashSet;
+                    newHashSet = (HashSet<Developers>) rf.getSet("HASHSET");
+                }                    
+                else if(selected.toString().equals("Tree Set")){
+                    SetFactory rf = new SetFactory();                                        
+                    TreeSet<Developers> newTreeSet;
+                    newTreeSet = (TreeSet<Developers>) rf.getSet("TREESET");
+                }
+                else {
+                    SetFactory rf = new SetFactory();                                        
+                    LinkedHashSet<Developers> newTreeSet;
+                    newTreeSet = (LinkedHashSet<Developers>) rf.getSet("LINKEDHASHSET");
+                }
+
     }//GEN-LAST:event_implementationCmbActionPerformed
 
     private void registerbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerbtnActionPerformed
         // TODO add your handling code here:
-        if (developerNameInputtf.getText().isEmpty()){
+        if (developerNameInputtf.   getText().isEmpty()){
             developerNameInputtf.   setText("");
             webDevTxtBx.            setSelected(false);
             javaDevTxtBx.           setSelected(false);
@@ -259,6 +292,7 @@ public class ImplementationType extends javax.swing.JFrame {
             testlbl.                setText("Please enter a valid name");
         }
         else{
+            //Creates and ads the Developer to the hash
             developerNameInputtf.   setText("");
             webDevTxtBx.            setSelected(false);
             javaDevTxtBx.           setSelected(false);
@@ -266,7 +300,13 @@ public class ImplementationType extends javax.swing.JFrame {
             registerbtn.            setEnabled(false);
             testlbl.                setText("Developer registered");
             finishInputbtn.         setEnabled(true);
-            
+         /***   
+            //nakes a new Developer based on GUI inputs
+            Developers newDeveloper = new Developers(
+                    developerNameInputtf.getText(),
+                    
+            );
+            **/
         }
         
     }//GEN-LAST:event_registerbtnActionPerformed
@@ -310,6 +350,36 @@ public class ImplementationType extends javax.swing.JFrame {
             showDevsbtn.            setEnabled(true);
     }//GEN-LAST:event_finishInputbtnActionPerformed
 
+    private void developerNameInputtfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_developerNameInputtfKeyTyped
+        // TODO add your handling code here:
+        // Taken from
+        // http://stackoverflow.com/questions/34377607/how-to-make-jtextfield-only-accept-characters-in-netbeans
+         if(!(Character.isLetter(evt.getKeyChar()))){
+                evt.consume();}
+    }//GEN-LAST:event_developerNameInputtfKeyTyped
+
+    private void showDevsbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showDevsbtnActionPerformed
+        // TODO add your handling code here:
+        Object selected = implementationCmb.getSelectedItem();
+            if(selected.toString().equals("Hash Set")){
+                SetFactory rf = new SetFactory();                    
+                HashSet<Developers> newHashSet;
+                newHashSet = (HashSet<Developers>) rf.getSet("HASHSET");
+            }                    
+            else if(selected.toString().equals("Tree Set")){
+                SetFactory rf = new SetFactory();                                        
+                TreeSet<Developers> newTreeSet;
+                newTreeSet = (TreeSet<Developers>) rf.getSet("TREESET");
+            }
+            else {
+                SetFactory rf = new SetFactory();                                        
+                LinkedHashSet<Developers> newTreeSet;
+                newTreeSet = (LinkedHashSet<Developers>) rf.getSet("LINKEDHASHSET");
+  
+            }
+        
+    }//GEN-LAST:event_showDevsbtnActionPerformed
+
     /**
      * @param args the command line arguments
      */ 
@@ -336,16 +406,19 @@ public class ImplementationType extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ImplementationType.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-            
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
                 new ImplementationType().setVisible(true);
+
             }
         });
     }
-
+        Metodico newMetodico = new Metodico();
+        SetFactory newSetFactory =  new SetFactory();
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
@@ -364,5 +437,6 @@ public class ImplementationType extends javax.swing.JFrame {
     private javax.swing.JLabel testlbl;
     private javax.swing.JCheckBox webDevTxtBx;
     // End of variables declaration//GEN-END:variables
+
 }
 
