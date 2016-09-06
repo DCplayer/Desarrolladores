@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Set;
+import java.util.Collections;
 
 /**
  * Created by Diego on 01/09/2016.
@@ -115,10 +116,10 @@ public class Metodico {
             return "Los Desarrolladores de Java hacen el grupo mas grande";
         }
         else if(ContWeb > ContJava && ContWeb > ContMob){
-            return "Los Desarrolladores de Java hacen el grupo mas grande";
+            return "Los Desarrolladores de Web hacen el grupo mas grande";
         }
         else if(ContMob > ContWeb && ContMob > ContJava){
-            return "Los Desarrolladores de Java hacen el grupo mas grande";
+            return "Los Desarrolladores de Mobil hacen el grupo mas grande";
         }
         else if(ContJava == ContWeb && ContJava > ContMob){
             return "Los Desarrolladores de Java y Web hacen el grupo mas "
@@ -142,9 +143,13 @@ public class Metodico {
         ArrayList<Developers> web = new ArrayList<Developers>();
         ArrayList<Developers> java = new ArrayList<Developers>();
         ArrayList<Developers> mobil = new ArrayList<Developers>();
+        ArrayList<Developers> todo = new ArrayList<Developers>();
+
 
 
         for(Developers dev: set){
+            todo.add(dev);
+
             if(dev.isJava()){
                 java.add(dev);
 
@@ -158,10 +163,22 @@ public class Metodico {
 
             }
 
-            if(string == "Los Desarrolladores de Java hacen el grupo mas grande"){
+        }
 
-            }
-
-
+        if(string == "Los Desarrolladores de Java hacen el grupo mas grande"){
+            Collections.reverse(java);
+            return java;
+        }
+        else if (string == "Los Desarrolladores de Web hacen el grupo mas grande"){
+            Collections.reverse(web);
+            return web;
+        }
+        else if (string == "Los Desarrolladores de Mobil hacen el grupo mas grande"){
+            Collections.reverse(mobil);
+            return mobil;
+        }
+        else{
+            return todo;
         }
     }
+}
